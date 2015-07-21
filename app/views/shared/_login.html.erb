@@ -1,0 +1,7 @@
+<h3>Log in to post and view your posts!</h3>
+<%= form_for :user, url: login_path do |f| %>
+    <%= f.text_field :email, placeholder: "Enter your email" %>
+    <%= f.password_field :password, placeholder: "Enter your password"%>
+    <%= f.submit "Login"%>
+    <button><%= link_to "Sign up!", new_user_path %></button>
+  	<% end %>

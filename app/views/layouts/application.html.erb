@@ -2,13 +2,33 @@
 <html>
 <head>
   <title>HackerClone</title>
+
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="container">
+	<div class="row">
+		<h1>The Hackedy Hackin' News.</h1>	
+	</div>
+	<div class="row">
+		<div class="col-sm-7 col-sm-offset-1">
+			<%= yield %>
+		</div>
+		<div class="col-sm-3 col-sm-offset-1">
+			<% if @current_user %>
+			<%= render 'shared/loggedin' %>
+			<% else %>
+			<%= render 'shared/login' %>
+			<% end %>
+		</div>
+	</div>
+</div>
 </body>
 </html>
