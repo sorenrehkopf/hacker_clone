@@ -1,10 +1,7 @@
 class PostsController < ApplicationController
 
-	# before_action :current_user
+	before_action :is_authenticated?
 
-	# if !@current_user
-	# 	redirect_to root_path
-	# end
 
 	def new
 		@post = Post.new

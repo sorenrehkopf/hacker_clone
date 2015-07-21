@@ -9,12 +9,11 @@ class ApplicationController < ActionController::Base
   		@current_user ||= User.find_by_id(session[:user_id])
   	end
 
- #  	def is_authenticated?
-	# 	if @current_user
-	# 		@loggedin = true
-	# 	else
-	# 		@loggedin = false
-	# 	end
-	# end	
+def is_authenticated?
+    unless @current_user
+      flash[:danger] = 'You must make an account to post!'
+      redirect_to root_path
+    end
+  end
 
 end
