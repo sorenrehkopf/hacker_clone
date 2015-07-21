@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
 def is_authenticated?
     unless @current_user
-      flash[:danger] = 'You must make an account to post!'
+      flash[:danger] = 'You need an account to do that!'
       redirect_to root_path
     end
   end
