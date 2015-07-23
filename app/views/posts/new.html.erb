@@ -1,6 +1,6 @@
 <h1>Create a new post!</h1>
 
-<%= form_for @post do |f| %>
+<%= bootstrap_form_for @post do |f| %>
     <%= f.text_field :title, placeholder: "Title" %>
     <%= f.text_area :body, placeholder: "What's the post?"%>
     <%= f.submit "Create!"%>

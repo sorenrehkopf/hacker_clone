@@ -6,13 +6,27 @@ Rails.application.routes.draw do
 
   resources :main
 
-  resources :posts
+  resources :posts do
+    resources :votes
+    resources :comments
+  end
+
+  resources :comments
+  
+  resources :comments do
+    resources :comments
+    resources :votes
+  end
 
   get 'logout' => 'main#destroy'
 
   get 'past_posts' => 'posts#history'
 
   resources :users
+
+  resources :users, :only => [:show] do 
+    resources :votes
+  end
 
   # post 'users/new' => 'users#new'
 

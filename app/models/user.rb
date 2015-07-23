@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	has_many :posts
+	has_many :ratings, class_name: 'Vote'
+	has_many :votes, as: :votable
+	has_many :thoughts, class_name: 'Comment'
+	
 
 	validates :email,
 	presence: true,

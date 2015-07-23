@@ -11,6 +11,12 @@ class PostsController < ApplicationController
 		@current_user.posts.create post_params
 		redirect_to root_path
 	end
+	def destroy
+    p= Post.find(params[:id])
+    p.delete
+    redirect_to root_path
+  end
+
 	def show
 		@post=Post.find params[:id]
 	end

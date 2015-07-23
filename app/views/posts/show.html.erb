@@ -2,5 +2,21 @@
 
 <div>
 <h2><%= @post.title %></h2>
-<p><%= @post.body %></p>
+<p><% @post.body %></p>
+<%= bootstrap_form_for [@post, Comment.new] do |n| %>
+	<%= n.text_field :body, placeholder: "Enter comment" %>
+	<%= n.submit "Add Comment!" %>
+<% end %>
+	<% @post.comments.each do |c| %>
+	<div>
+		<%= bootstrap_form_for [c,Vote.new] do |f| %>
+		<%= f.button "", value: 'up', class: 'css-votes btn btn-primary btn-xs glyphicon glyphicon-chevron-up' %>
+		<%= f.button "", value: 'down', class: 'css-votes btn btn-primary btn-xs glyphicon glyphicon-chevron-down' %>
+			<% end %>
+		<p class="css-post"><%= c.votes.reduce(0){ |sum,v| sum + v.value} %></p>
+		<div><%= c.user_id %></div>
+		<div><%= c.body %></div>
+		</div>	
+		<% end %>
+
 </div>

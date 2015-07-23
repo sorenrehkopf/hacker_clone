@@ -3,9 +3,27 @@
 <%= render "shared/flash" %>
 
 <% @posts.each do |post| %>
-	<div>
-	<h2><%= post.title %></h2>
-	<p><%= post.body %></p>
+
+<div class="well">
+	<div class="css-post">
+		<%= bootstrap_form_for [post,Vote.new] do |f| %>
+		<%= f.button "", value: 'up', class: 'css-votes btn btn-primary btn-xs glyphicon glyphicon-chevron-up' %>
+		<%= f.button "", value: 'down', class: 'css-votes btn btn-primary btn-xs glyphicon glyphicon-chevron-down' %>
+		<% end %>
+		</div>
+	<div class="css-post">
+	<p class="css-post"><%= post.votes.reduce(0){ |sum,v| sum + v.value} %></p>
+	<h2 class="css-post"><%= post.title %></h2>
+	<p class="css-post"><%= post.body %></p>
+	<p class="css-post"><%= post.user_id %></p>
+	</div>
+	<div class="css-post">
+	<%= link_to "", post, method: :delete, class: "glyphicon glyphicon-trash pull-right" %>
 	<%= link_to "This post!", post, class: "pull-right" %>
 	</div>
-<% end %>
+
+</div>
+	<% end %>
+
+	
+	

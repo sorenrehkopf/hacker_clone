@@ -3,6 +3,7 @@ class MainController < ApplicationController
 
 	def index
 		@posts = Post.all
+    @users = User.all
 	end
 	def new
 		# @user = User.new
@@ -22,6 +23,12 @@ class MainController < ApplicationController
       redirect_to root_path
     end
 	end
+
+  def destroy
+    p= Post.find(params[:id])
+    p.delete
+    redirect_to root_path
+  end
 
 	def user_params
     	params.require(:user).permit(:email,:password)

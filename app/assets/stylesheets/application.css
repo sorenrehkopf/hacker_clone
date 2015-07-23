@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.css-votes{
+	display:block;
+}
+.css-post{
+	display:inline-block;
+	padding:0px 10px 0px 10px;
+}
